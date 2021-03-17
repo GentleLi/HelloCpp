@@ -3,4 +3,4 @@ project(HelloCpp)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(HelloCpp main.cpp person.h)
+add_executable(HelloCpp main.cpp person.h shape.h file.h shape_type.h)
