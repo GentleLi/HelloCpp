@@ -1,17 +1,19 @@
 //
 // Created by Administrator on 2021/3/17.
 //
-
+#include <iostream>
 #include <cstdio>
 #include "shape_type.h"
+
+using namespace std;
 
 #ifndef HELLOCPP_SHAPE_H
 #define HELLOCPP_SHAPE_H
 
 class Shape {
 public:
-    char name[40];
-    ShapeType shapeType;
+    char name[20];
+    ShapeType shapeType = TRIANGLE;
     float area;
 
     float getArea();
@@ -52,7 +54,7 @@ float Triangle::getArea() {
 }
 
 void Triangle::toString() {
-    printf("name : %s , area : %f", name, getArea());
+    printf("name : %s , area : %f\n", name, getArea());
 }
 
 #endif //HELLOCPP_SHAPE_H
