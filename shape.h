@@ -5,20 +5,23 @@
 #include <cstdio>
 #include "shape_type.h"
 
+#define PI 3.14159265//宏定义
+
 using namespace std;
+
 
 #ifndef HELLOCPP_SHAPE_H
 #define HELLOCPP_SHAPE_H
 
 class Shape {
 public:
-    char name[20];
+    char name[20]{};
     ShapeType shapeType = TRIANGLE;
-    float area;
+    float area{};
 
-    float getArea();
+    virtual float getArea();
 
-    void toString();
+    virtual void toString();
 
     void setType(ShapeType type);
 
@@ -30,7 +33,7 @@ float Shape::getArea() {
 }
 
 void Shape::toString() {
-    printf("name : %s , area : %f", name, getArea());
+    printf("name : %s , area : %f\n", name, getArea());
 }
 
 void Shape::setType(ShapeType type) {
@@ -40,12 +43,12 @@ void Shape::setType(ShapeType type) {
 
 class Triangle : public Shape {
 public:
-    float base;
-    float height;
+    float base{};
+    float height{};
 
-    void toString();
+    void toString() override;
 
-    float getArea();
+    float getArea() override;
 };
 
 float Triangle::getArea() {
@@ -55,6 +58,26 @@ float Triangle::getArea() {
 
 void Triangle::toString() {
     printf("name : %s , area : %f\n", name, getArea());
+}
+
+
+class Circle : public Shape {
+public:
+
+    float radius{};
+
+//    void toString() override;
+    float getArea() override;
+
+};
+
+//void Circle::toString() {
+//    printf("name : %s , area : %f\n", name, getArea());
+//}
+//
+float Circle::getArea() {
+    area = PI * radius * radius;
+    return area;
 }
 
 #endif //HELLOCPP_SHAPE_H
